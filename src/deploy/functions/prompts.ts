@@ -20,7 +20,7 @@ import { EndpointUpdate } from "./release/planner";
 export async function promptForFailurePolicies(
   options: Options,
   want: backend.Backend,
-  have: backend.Backend
+  have: backend.Backend,
 ): Promise<void> {
   // Collect all the functions that have a retry policy
   const retryEndpoints = backend.allEndpoints(want).filter((e) => {
@@ -98,7 +98,7 @@ export async function promptForFunctionDeletion(
       "The following functions are found in your project but do not exist in your local source code:\n" +
         deleteList +
         "\n\nAborting because deletion cannot proceed in non-interactive mode. To fix, manually delete the functions by running:\n" +
-        clc.bold(deleteCommands)
+        clc.bold(deleteCommands),
     );
   } else {
     logger.info(
@@ -106,7 +106,7 @@ export async function promptForFunctionDeletion(
         deleteList +
         "\n\nIf you are renaming a function or changing its region, it is recommended that you create the new " +
         "function first before deleting the old one to prevent event loss. For more info, visit " +
-        clc.underline("https://firebase.google.com/docs/functions/manage-functions#modify" + "\n")
+        clc.underline("https://firebase.google.com/docs/functions/manage-functions#modify" + "\n"),
     );
     shouldDeleteFns = await promptOnce({
       type: "confirm",
@@ -189,7 +189,7 @@ export async function promptForUnsafeMigration(
 export async function promptForMinInstances(
   options: Options,
   want: backend.Backend,
-  have: backend.Backend
+  have: backend.Backend,
 ): Promise<void> {
   if (options.force) {
     return;
@@ -222,7 +222,7 @@ export async function promptForMinInstances(
       "Pass the --force option to deploy functions that increase the minimum bill",
       {
         exit: 1,
-      }
+      },
     );
   }
 
