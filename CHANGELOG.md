@@ -1,1 +1,2 @@
+- Add new 2nd gen Firestore auth context triggers. (#1519)
 - Added rudimentary email enumeration protection for auth emulator. (#6702)
